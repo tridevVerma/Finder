@@ -11,18 +11,19 @@ export const GoogleDataContextProvider = ({ children }) => {
 
   const fetchGoogleData = async (type, query) => {
     setIsLoading(true);
-
+    console.log(process.env.REACT_APP_API_KEY);
     let url = `${baseURL}/${type || "search"}/q=${query}&num=40`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "X-User-Agent": "desktop",
         "X-Proxy-Location": "US",
-        "X-RapidAPI-Key": process.env.REACT_API_KEY,
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
       },
     });
 
+    console.log(response);
     const data = await response.json();
     setResults(data);
     setIsLoading(false);
