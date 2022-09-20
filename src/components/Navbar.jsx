@@ -17,7 +17,6 @@ const Navbar = ({ darkTheme, darkMode }) => {
     const query = searchTerm.split(" ").join("+");
     fetchGoogleData(location.pathname.substring(1), query);
     if (location.pathname === "/") {
-      console.log("search item");
       navigate("/search");
     }
   };
